@@ -1,0 +1,99 @@
+{
+  "audit_timestamp": "2025-10-02T21:29:45.337036",
+  "total_devices": 2,
+  "results": [
+    {
+      "device": "targetdevice1",
+      "ip": "192.168.64.20",
+      "timestamp": "2025-10-02T21:29:44.306829",
+      "violations": [
+        {
+          "device": "targetdevice1",
+          "category": "SSH Configuration",
+          "rule": "Root login must be disabled",
+          "parameter": "PermitRootLogin",
+          "expected": "no",
+          "actual": "yes",
+          "severity": "critical",
+          "remediation": "Set PermitRootLogin to no in /etc/ssh/sshd_config"
+        },
+        {
+          "device": "targetdevice1",
+          "category": "User Accounts",
+          "rule": "Guest account should not exist",
+          "parameter": "prohibited_user",
+          "expected": "User 'guest' should not exist",
+          "actual": "User exists",
+          "severity": "warning",
+          "remediation": "Remove user account: sudo userdel guest"
+        },
+        {
+          "device": "targetdevice1",
+          "category": "Firewall",
+          "rule": "Telnet must be blocked",
+          "parameter": "port_23",
+          "expected": "DENY 23/tcp",
+          "actual": "Port is allowed",
+          "severity": "critical",
+          "remediation": "sudo ufw deny 23/tcp"
+        }
+      ],
+      "score": 65,
+      "status": "COMPLETED",
+      "stats": {
+        "critical": 2,
+        "warning": 1,
+        "total": 3
+      }
+    },
+    {
+      "device": "targetdevice2",
+      "ip": "192.168.64.21",
+      "timestamp": "2025-10-02T21:29:44.841376",
+      "violations": [
+        {
+          "device": "targetdevice2",
+          "category": "SSH Configuration",
+          "rule": "Empty passwords must be prohibited",
+          "parameter": "PermitEmptyPasswords",
+          "expected": "no",
+          "actual": "yes",
+          "severity": "critical",
+          "remediation": "Set PermitEmptyPasswords to no in /etc/ssh/sshd_config"
+        },
+        {
+          "device": "targetdevice2",
+          "category": "User Accounts",
+          "rule": "Test accounts should be removed",
+          "parameter": "prohibited_user",
+          "expected": "User 'test' should not exist",
+          "actual": "User exists",
+          "severity": "warning",
+          "remediation": "Remove user account: sudo userdel test"
+        },
+        {
+          "device": "targetdevice2",
+          "category": "Firewall",
+          "rule": "FTP should be blocked",
+          "parameter": "port_21",
+          "expected": "DENY 21/tcp",
+          "actual": "Port is allowed",
+          "severity": "warning",
+          "remediation": "sudo ufw deny 21/tcp"
+        }
+      ],
+      "score": 75,
+      "status": "COMPLETED",
+      "stats": {
+        "critical": 1,
+        "warning": 2,
+        "total": 3
+      }
+    }
+  ],
+  "summary": {
+    "completed": 0,
+    "failed": 0,
+    "average_score": 70.0
+  }
+}

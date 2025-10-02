@@ -1,0 +1,19 @@
+# User Account Security Baseline
+required_users:
+  - username: audituser
+    description: "Audit account must exist"
+    severity: "critical"
+
+prohibited_users:
+  - username: guest
+    description: "Guest account should not exist"
+    severity: "warning"
+
+  - username: test
+    description: "Test accounts should be removed"
+    severity: "warning"
+
+password_policy:
+  max_days: 90
+  min_days: 1
+  warn_age: 7

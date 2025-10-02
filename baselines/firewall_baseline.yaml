@@ -1,0 +1,31 @@
+# Firewall Security Baseline Configuration
+required_rules:
+  - port: 22
+    protocol: tcp
+    action: ALLOW
+    description: "SSH access must be allowed"
+    severity: "critical"
+
+  - port: 443
+    protocol: tcp
+    action: ALLOW
+    description: "HTTPS should be allowed"
+    severity: "warning"
+
+blocked_rules:
+  - port: 23
+    protocol: tcp
+    action: DENY
+    description: "Telnet must be blocked"
+    severity: "critical"
+
+  - port: 21
+    protocol: tcp
+    action: DENY
+    description: "FTP should be blocked"
+    severity: "warning"
+
+default_policy:
+  INPUT: DROP
+  FORWARD: DROP
+  OUTPUT: ACCEPT

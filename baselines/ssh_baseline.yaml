@@ -1,0 +1,27 @@
+# SSH Security Baseline Configuration
+ssh_config:
+  PermitRootLogin: "no"
+  PasswordAuthentication: "yes"
+  PubkeyAuthentication: "yes"
+  PermitEmptyPasswords: "no"
+  X11Forwarding: "no"
+  MaxAuthTries: 3
+  Port: 22
+  Protocol: 2
+
+compliance_rules:
+  - rule: "Root login must be disabled"
+    parameter: "PermitRootLogin"
+    expected: "no"
+    severity: "critical"
+
+  - rule: "Empty passwords must be prohibited"
+    parameter: "PermitEmptyPasswords"
+    expected: "no"
+    severity: "critical"
+
+  - rule: "Max authentication tries should be 3 or less"
+    parameter: "MaxAuthTries"
+    expected: "3"
+    severity: "warning"
+
