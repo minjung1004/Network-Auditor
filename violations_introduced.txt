@@ -1,0 +1,9 @@
+VM2 Violations:
+1. Enables PermitRootLogin - Allows direct root access (Critical Risk)
+2. Created 'guest' user account - Unauthorized account (Warning)
+3. Allowed Telenet port 23 - Unencrypted protocol (Critical Risk)
+
+VM3 Violations:
+1. Enabled PermitEmptyPasswords - Allows passwords to be empty (Critical Risk)
+2. Created 'test' user account - Unauthorized account (Warning)
+3. Allowed FTP port 21 - Unencrypted protocol (Warning)
