@@ -27,7 +27,7 @@ class NetworkAuditor:
         self.firewall_baseline = {}
         self.audit_results = []
     
-    # 1. Load device inventory from YAML file
+    # Load device inventory from YAML file
     def load_device_inventory(self):
         inventory_path = self.base_dir / "device_inventory.yaml"
         try:
