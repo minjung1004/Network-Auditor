@@ -15,6 +15,7 @@ import re
 
 
 class NetworkAuditor:
+    # Define directory paths
     def __init__(self, base_dir: str = "~/network-auditor"):
         self.base_dir = Path(base_dir).expanduser()
         self.baselines_dir = self.base_dir / "baselines"
